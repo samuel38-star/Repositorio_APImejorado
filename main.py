@@ -21,7 +21,7 @@ productos = [
 
 @app.get("/")
 def inicio():
-    return {"mensaje": "API de productos funcionando"}
+    return {"mensaje": "Bienvenido ingeniero"}
 
 @app.get("/productos")
 def listProducto():
@@ -43,14 +43,13 @@ def CrearProductos(data: dict = Body(...)):
     nom = data.get("nombre")
     val = data.get("valor")
     exi = data.get("existencias")
-
+    
     if None in (nom, val, exi):
         return {"mensaje": "Faltan datos"}
 
     if val <= 0 or exi <= 0:
         return {"mensaje": "Valor y existencias deben ser mayores a 0"}
 
-    # 🔥 más simple para consecutivo
     nuevo_codigo = productos[-1]["codigo"] + 1 if productos else 1
 
     nuevo_producto = {
