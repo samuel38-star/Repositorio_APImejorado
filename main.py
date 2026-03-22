@@ -40,14 +40,20 @@ def FindProductos(cod: int):
 
 @app.post("/productos")
 def CrearProductos(data: dict = Body(...)):
-
+    print("DATA:", data)
+    
     nom = data.get("nombre")
     val = data.get("valor")
     exi = data.get("existencias")
-    return {"recibido": data}
+
+    print("NOMBRE:", nom)
+    print("VALOR:", val)
+    print("EXISTENCIAS:", exi)
 
     if None in (nom, val, exi):
-        return {"mensaje": "Faltan datos"}, 
+        return {"mensaje": "Faltan datos"}
+
+    return {"ok": True}
 
     if val <= 0 or exi <= 0:
         return {"mensaje": "Valor y existencias deben ser mayores a 0"}
