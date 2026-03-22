@@ -40,12 +40,12 @@ def FindProductos(cod: int):
 
 @app.post("/productos")
 def CrearProductos(data: dict = Body(...)):
-    print("DATA RECIBIDA:", data)
-    
+
     nom = data.get("nombre")
     val = data.get("valor")
     exi = data.get("existencias")
-    
+    return {"recibido": data}
+
     if None in (nom, val, exi):
         return {"mensaje": "Faltan datos"}, 
 
