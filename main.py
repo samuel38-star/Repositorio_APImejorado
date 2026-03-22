@@ -45,7 +45,8 @@ def CrearProductos(data: dict = Body(...)):
     exi = data.get("existencias")
     
     if None in (nom, val, exi):
-        return {"mensaje": "Faltan datos"}, print(data)
+        return {"mensaje": "Faltan datos"}, 
+    print(data)
 
     if val <= 0 or exi <= 0:
         return {"mensaje": "Valor y existencias deben ser mayores a 0"}
