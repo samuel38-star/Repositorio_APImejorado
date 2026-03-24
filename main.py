@@ -3,9 +3,20 @@ from fastapi import FastAPI, Body
 app = FastAPI()
 
 productos = [
-    {"codigo": 1, "nombre": "Arroz", "valor": 2500, "existencias": 20},
-    {"codigo": 2, "nombre": "Leche", "valor": 3500, "existencias": 15},
-    {"codigo": 3, "nombre": "Pan", "valor": 1000, "existencias": 30}
+    {"codigo": 1, 
+     "nombre": "Arroz", 
+     "valor": 2500, 
+     "existencias": 20},
+
+    {"codigo": 2, 
+     "nombre": "Leche", 
+     "valor": 3500, 
+     "existencias": 15},
+
+    {"codigo": 3, 
+     "nombre": "Pan", 
+     "valor": 1000, 
+     "existencias": 30}
 ]
 
 @app.get("/")
@@ -27,22 +38,21 @@ def FindProductos(cod: int):
 
     return {"mensaje": "Producto no encontrado"}
 
-# 🔴 CAMBIO IMPORTANTE AQUÍ
 @app.post("/productos")
-def CrearProductos(data: dict = Body(default={})):  # 👈 cambio aquí
+def CrearProductos(data: dict = Body(default={})):  
 
-    print("DATA:", data)  # 👈 para verificar
+    print("DATA:", data)  
 
     nom = data.get("nombre")
     val = data.get("valor")
     exi = data.get("existencias")
 
-    print(nom, val, exi)  # 👈 debug
+    print(nom, val, exi)  
 
     if nom is None or val is None or exi is None:
         return {
             "mensaje": "Faltan datos",
-            "recibido": data   # 👈 ahora te muestra qué llegó
+            "recibido": data   
         }
 
     if val <= 0 or exi <= 0:
@@ -64,7 +74,6 @@ def CrearProductos(data: dict = Body(default={})):  # 👈 cambio aquí
         "producto": nuevo_producto
     }
 
-# 🔴 MISMO CAMBIO AQUÍ
 @app.put("/productos/{cod}")
 def ActualizarProducto(cod: int, data: dict = Body(default={})):
 
