@@ -1,23 +1,21 @@
 from fastapi import FastAPI, Body
+import json
 
 app = FastAPI()
+ARCHIVO = "productos.json"
 
-productos = [
-    {"codigo": 1, 
-     "nombre": "Arroz", 
-     "valor": 2500, 
-     "existencias": 20},
+def cargar_productos():
+    try:
+        with open(ARCHIVO, "r") as f:
+            return json.load(f)
+    except:
+        return []
 
-    {"codigo": 2, 
-     "nombre": "Leche", 
-     "valor": 3500, 
-     "existencias": 15},
+def guardar_productos(productos):
+    with open(ARCHIVO, "w") as f:
+        json.dump(productos, f, indent=4)
 
-    {"codigo": 3, 
-     "nombre": "Pan", 
-     "valor": 1000, 
-     "existencias": 30}
-]
+productos = cargar_productos()
 
 @app.get("/")
 def inicio():
@@ -68,7 +66,7 @@ def CrearProductos(data: dict = Body(default={})):
     }
 
     productos.append(nuevo_producto)
-
+    guardar_productos(productos)
     return {
         "mensaje": "Producto agregado correctamente",
         "producto": nuevo_producto
@@ -104,13 +102,13 @@ def ActualizarProducto(cod: int, data: dict = Body(default={})):
                 "valor": val,
                 "existencias": exi
             })
-
+            guardar_productos(productos) 
             return {
                 "mensaje": "Producto actualizado",
                 "antes": antes,
                 "despues": prod
             }
-
+            
     return {"mensaje": "Producto no encontrado"}
 
 @app.delete("/productos/{cod}")
@@ -122,7 +120,7 @@ def EliminarProducto(cod: int):
         if prod["codigo"] == cod:
             eliminado = prod.copy()
             productos.remove(prod)
-
+            guardar_productos(productos)  
             return {
                 "mensaje": "Producto eliminado",
                 "producto": eliminado

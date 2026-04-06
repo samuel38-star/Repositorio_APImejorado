@@ -1,0 +1,5 @@
+[
+    {"codigo": 1, "nombre": "Arroz", "valor": 2500, "existencias": 20},
+    {"codigo": 2, "nombre": "Leche", "valor": 3500, "existencias": 15},
+    {"codigo": 3, "nombre": "Pan", "valor": 1000, "existencias": 30}
+]
