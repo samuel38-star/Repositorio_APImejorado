@@ -1,0 +1,117 @@
+/* ===============================
+   style.css — Perfil Samuel Romero
+   Estilo sencillo y limpio
+   =============================== */
+
+/* === ESTILOS GENERALES === */
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f0f4f8;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+/* === ENCABEZADO === */
+header {
+  background-color: #DC143C;
+  color: white;
+  text-align: center;
+  padding: 40px 20px 30px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* === FOTO DE PERFIL === */
+#foto {
+  text-align: center;
+  margin: 30px auto;
+}
+
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 5px solid #DC143C;
+  background-color: white;
+}
+
+/* === SECCIONES === */
+section {
+  background-color: white;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 24px 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #DC143C;
+  margin-top: 0;
+  margin-bottom: 14px;
+  border-bottom: 2px solid #e8f0fb;
+  padding-bottom: 8px;
+}
+
+section p {
+  line-height: 1.7;
+  font-size: 1rem;
+  color: #555555;
+  margin: 0;
+}
+
+/* === LISTAS (habilidades e intereses) === */
+ul,
+ol {
+  padding-left: 22px;
+  margin: 0;
+}
+
+ul li,
+ol li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+/* === LISTA DE CONTACTO (sin viñetas normales) === */
+.lista-contacto {
+  list-style: none;
+  padding-left: 0;
+}
+
+.lista-contacto li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.lista-contacto a {
+  color: #DC143C;
+  text-decoration: none;
+}
+
+.lista-contacto a:hover {
+  text-decoration: underline;
+}
+
+/* === PIE DE PÁGINA === */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.85rem;
+  color: #999999;
+}
